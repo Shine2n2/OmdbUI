@@ -1,0 +1,16 @@
+<div *ngIf="searchResults.length > 0">
+  <h3>Search Results</h3>
+  <ul>
+    <li *ngFor="let result of getPaginatedResults()">
+      {{ result.Title }} ({{ result.Year }})
+    </li>
+  </ul>
+
+  <div *ngIf="searchResults.length > pageSize">
+    <div class="pagination">
+      <button *ngFor="let page of getPaginationArray()" (click)="changePage(page)">
+        {{ page }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+
+        .main2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            height: 600px; /* Set a fixed height */
+            overflow-y: auto; /* Enable vertical scroll */
+        }
+
+        .result {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            display: flex; /* Use flexbox to align items horizontally */
+        }
+
+        .result:hover {
+            transform: scale(1.02);
+        }
+
+        .result img {
+            max-width: 600px; /* Adjust as needed */
+            height: auto;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .result-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .result-description {
+            flex: 1; /* Allow description to expand and take remaining space */
+            color: #666;
+        }
+
+        .back-link {
+          color: #007BFF;
+          text-decoration: none;
+          margin-top: 10px !important;
+          margin-bottom: 10px !important;
+          padding-top: 100px !important;
+          padding-bottom: 100px !important;
+        }
