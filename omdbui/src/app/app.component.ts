@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   searchResults: any[] = [];
   latestQueries: string[] = [];
   moviesResult:Moviesearch[]= [];
+  sNumber: number = 0;
 
   constructor(private http: HttpClient, private router: Router, private _dataMovieService: MovieDataService) { }
 
@@ -52,6 +53,21 @@ export class AppComponent implements OnInit {
 
   getSearchResult(): void
   {
+
+    let books: { title: string, year: number }[] = [
+      { title: "Book 1", year: 2022 },
+      { title: "Book 2", year: 2023 },
+      { title: "Book 3", year: 2024 },
+      { title: "Book 4", year: 2025 },
+      { title: "Book 5", year: 2026 },
+      { title: "Book 6", year: 2027 },
+      { title: "Book 4", year: 2025 },
+      { title: "Book 5", year: 2026 },
+      { title: "Book 6", year: 2027 }
+      ];
+
+      this.searchResults = books;
+
     this.searchMoviesApi(this.title)
     .subscribe(
       (response)=>

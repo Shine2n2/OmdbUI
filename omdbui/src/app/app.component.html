@@ -8,7 +8,7 @@
 </div>
 
 <div>
-<div class="main" *ngFor="let result of moviesResult">
+<!-- <div class="main" *ngFor="let result of moviesResult">
  <div class="container" *ngFor="let result2 of result.Search" >
   <a [routerLink]="['/movie-detail', result2.imdbID]" a>
       <div class="result">
@@ -19,7 +19,28 @@
       </div>
     </a>
  </div>
-</div>
+</div> -->
+
+
+<div class="main" >
+  <div style="padding-right: 180px;text-align-last: right; color: green;">
+      <p *ngIf="searchResults.length > 1">Search Results</p>
+      <p *ngIf="searchResults.length == 1">Search Result</p>
+   </div>
+  <div class="container" *ngIf="searchResults.length > 0" >
+
+   <a  a>
+       <div class="result" *ngFor="let result of searchResults; let i = index" >
+         <div class="result-content" >
+             <h2 class="result-title"><span>{{i+1}} -  </span>Title: {{result.title}}</h2>
+             <p class="result-description">Year: {{result.year}}</p>
+         </div>
+       </div>
+     </a>
+  </div>
+ </div>
+
+
 </div>
 <router-outlet></router-outlet>
 

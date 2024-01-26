@@ -15,7 +15,7 @@ export class CorsInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
+      console.log("Okpala-------",request);
       request = request.clone({
         setHeaders: {
           'Access-Control-Allow-Origin': '*',

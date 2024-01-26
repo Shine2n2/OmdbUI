@@ -1,7 +1,6 @@
 {
   "name": "omdbui",
   "version": "0.0.0",
-  "proxy":"http://localhost:5212",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
