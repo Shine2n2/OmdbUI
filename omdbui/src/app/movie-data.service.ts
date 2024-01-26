@@ -19,7 +19,7 @@ storeMovieData(arg: Moviesearch): void {
 
 getStoredMovieData(id:string): Movie | undefined {
   if( this.movieData !==null) {
-    return this.movieData?.Search.find(movie => movie.imdbID === id);
+    return this.movieData?.search.find(movie => movie.imdbID === id);
   }
  return
 }

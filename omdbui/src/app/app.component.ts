@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Moviesearch } from './models/moviesearch';
 import { Observable } from 'rxjs';
 import { MovieDataService } from './movie-data.service';
+import { Movie } from './models/movie';
 
 @Component({
   selector: 'app-root',
@@ -13,30 +14,23 @@ import { MovieDataService } from './movie-data.service';
 
 export class AppComponent implements OnInit {
   title: string ='';
-  searchResults: any[] = [];
+  searchResults: Movie[] = [];
+  //searchResults: Moviesearch | any;
+
   latestQueries: string[] = [];
-  moviesResult:Moviesearch[]= [];
+  moviesResult: Moviesearch | any;
   sNumber: number = 0;
+  searchLenth: number = 0
 
   constructor(private http: HttpClient, private router: Router, private _dataMovieService: MovieDataService) { }
 
   ngOnInit(): void {
 
+    this.getTopSearchQueries();
   }
 
 
-  private saveLatestQuery(): void {
-    if (this.latestQueries.length >= 5) {
-      this.latestQueries.pop();
-    }
 
-    this.latestQueries.unshift(this.title);
-  }
-
-
-  handlePageChange(page: number): void {
-    console.log('Page changed to:', page);
-  }
 
   showDetails(imdbID: string): void {
     this.router.navigate(['/movie-details', imdbID]);
@@ -54,26 +48,13 @@ export class AppComponent implements OnInit {
   getSearchResult(): void
   {
 
-    let books: { title: string, year: number }[] = [
-      { title: "Book 1", year: 2022 },
-      { title: "Book 2", year: 2023 },
-      { title: "Book 3", year: 2024 },
-      { title: "Book 4", year: 2025 },
-      { title: "Book 5", year: 2026 },
-      { title: "Book 6", year: 2027 },
-      { title: "Book 4", year: 2025 },
-      { title: "Book 5", year: 2026 },
-      { title: "Book 6", year: 2027 }
-      ];
-
-      this.searchResults = books;
-
     this.searchMoviesApi(this.title)
     .subscribe(
       (response)=>
       {
         this._dataMovieService.storeMovieData(response);
-        console.log(response);
+        this.searchResults = response.search;
+        console.log("expected api res---", response.search);
        }
     );
   }
@@ -84,9 +65,8 @@ export class AppComponent implements OnInit {
     .subscribe(
       (response)=>
       {
-        this.moviesResult = response;
         this.latestQueries = response
-        console.log(response);
+        console.log("expected query res---", this.latestQueries);
        }
     );
   }

@@ -1,47 +1,44 @@
 <div style="text-align: center;">
   <h1 style="color: green;" >MOVIE SEARCH</h1>
-  <input [(ngModel)]="title" placeholder="Enter movie title" style="width: 50%; padding: 12px; margin: 8px 0; box-sizing: border-box; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; text-align: center;" />
-  <button (click)="getSearchResult()" style="width: 15%; padding: 12px; margin: 8px 0; box-sizing: border-box;font-size: 16px; text-align: center;">Search</button>
-</div>
-<div>
-  <span class="top-search"> <h4>Latest Search:</h4><div *ngIf="latestQueries.length > 0"><p *ngFor="let query of latestQueries">{{query}}</p></div></span>
+  <input [(ngModel)]="title" placeholder="Enter movie title" list="searchQueries"
+  style="width: 50%; padding: 12px; margin: 8px 0; box-sizing: border-box; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; text-align: center;" />
+
+  <datalist class="search-query" aria-placeholder="ttt" id="searchQueries">
+    <option value=" ">  FIVE RECENT SEARCHES </option>
+    <option *ngFor="let query of latestQueries" [value]="query">{{ query }}</option>
+  </datalist>
+
+  <button (click)="getSearchResult()" [disabled]="!title" style="width: 15%; padding: 12px; margin: 8px 0; box-sizing: border-box;font-size: 16px; text-align: center;">Search</button>
 </div>
 
 <div>
-<!-- <div class="main" *ngFor="let result of moviesResult">
- <div class="container" *ngFor="let result2 of result.Search" >
-  <a [routerLink]="['/movie-detail', result2.imdbID]" a>
-      <div class="result">
-        <div class="result-content">
-            <h2 class="result-title">Title: {{result2.Title}}</h2>
-            <p class="result-description">Year: {{result2.Type}}</p>
-        </div>
-      </div>
-    </a>
- </div>
-</div> -->
 
 
 <div class="main" >
   <div style="padding-right: 180px;text-align-last: right; color: green;">
       <p *ngIf="searchResults.length > 1">Search Results</p>
       <p *ngIf="searchResults.length == 1">Search Result</p>
-   </div>
-  <div class="container" *ngIf="searchResults.length > 0" >
-
-   <a  a>
-       <div class="result" *ngFor="let result of searchResults; let i = index" >
-         <div class="result-content" >
-             <h2 class="result-title"><span>{{i+1}} -  </span>Title: {{result.title}}</h2>
-             <p class="result-description">Year: {{result.year}}</p>
-         </div>
-       </div>
-     </a>
+      <p style="justify-content: center;" *ngIf="searchResults.length == 0">No Result</p>
   </div>
+
+
+  <div class="content-scroll">
+    <div class="container" *ngFor="let result of searchResults; let i = index">
+      <div class="result" >
+        <a href="#" style="text-decoration: none;">
+          <div class="result-content">
+            <p class="result-title"><span>{{i+1}} - </span>Title: {{result.title}} <span>&nbsp;&nbsp;( {{result.year}} ) </span></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
  </div>
-
-
 </div>
+
+
+
 <router-outlet></router-outlet>
 
 

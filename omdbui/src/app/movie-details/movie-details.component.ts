@@ -33,10 +33,10 @@ export class MovieDetailsComponent implements OnInit {
   loadMovieDetails(id:any): void {
      var result = this._movieDataService.getStoredMovieData(this.imdbID);
      if(result){
-      this.title = result?.Title;
-      this.type = result?.Type;
-      this.year = result?.Year;
-      this.image = result?.Poster;
+      this.title = result?.title;
+      this.type = result?.type;
+      this.year = result?.year;
+      this.image = result?.poster;
      }
   }
 }

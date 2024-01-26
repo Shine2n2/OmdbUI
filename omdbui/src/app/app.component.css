@@ -8,9 +8,6 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
-  height: 300px;
-  overflow-y: auto;
-  overflow-x: fixed;
 }
 
 .result {
@@ -26,6 +23,7 @@
 .result:hover {
   transform: scale(1.02);
   background-color: lightgreen;
+
 }
 
 .result img {
@@ -36,11 +34,10 @@
 
 .result-content {
   flex: 1;
-  padding-top: 1px;
+  padding-top: 0px;
   padding-left: 30px;
-  padding-bottom: 1px;
-  margin-bottom: 2px;
-  max-height: 50px;
+  padding-bottom: 15px;
+  max-height: 40px;
 }
 
 .result-title {
@@ -75,5 +72,18 @@
   margin-bottom: 10px !important;
   padding-top: 100px !important;
   padding-bottom: 20px !important;
+}
+.content-scroll{
+  overflow-y: auto !important;
+  height: 300px;
+  margin-bottom: 50px;
+  max-width: 950px;
+  margin:auto !important;
+  margin-bottom: 70px !important;
+}
+
+.search-query{
+  align-items: start !important;
+  width: 500px !important;
 }
 
